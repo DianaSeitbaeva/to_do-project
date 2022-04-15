@@ -1,14 +1,14 @@
 from django.contrib import admin
 from django.template.defaultfilters import truncatechars
 
-from to_do.models import Exercise
+from .models import Exercise
 
 
 @admin.register(Exercise)
 class ExerciseAdmin(admin.ModelAdmin):  # noqa
     readonly_fields: tuple = (
         'date_time_created', 'date_time_deleted',
-        'existance_duration',
+        'date_time_live',
     )
     list_display: tuple = (
         'id', 'user', 'short_description',

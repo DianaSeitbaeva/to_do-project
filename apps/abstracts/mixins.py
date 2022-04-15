@@ -1,8 +1,8 @@
+from typing import Optional
 from django.http import HttpResponse
-from django.template import loader
-from django.template.backends.django import Template
+from django.template import loader,backends
 from django.core.handlers.wsgi import WSGIRequest
-
+from django.http import HttpResponse
 
 class HttpResponseMixin:
     """Mixins for handling HTTP response rendering."""
@@ -14,7 +14,10 @@ class HttpResponseMixin:
                           template_name: str,
                           context: dict = {}) -> HttpResponse:
         """Get HTTP response."""
-        template: Template = loader.get_template(template_name)
+        template:  backends.django.Template = \
+            loader.get_template(
+                template_name
+            )
 
         return HttpResponse(
             template.render(

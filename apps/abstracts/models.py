@@ -1,16 +1,7 @@
-from tabnanny import verbose
-import uuid
-
 from django.db import models
 
 
-class DateTimeCustom(models.Model):  # noqa
-    id = models.UUIDField(
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False,
-        verbose_name='Идентификатор'
-    )
+class AbstractDateTime(models.Model):  # noqa
     date_time_created = models.DateTimeField(
         verbose_name='Дата и время создания',
         auto_now_add=True
@@ -18,9 +9,10 @@ class DateTimeCustom(models.Model):  # noqa
     date_time_deleted = models.DateTimeField(
         verbose_name='Дата и время удаления',
         null=True,
-        blank=True
+        blank=True,
+        auto_now=True
     )
-    existance_duration = models.DurationField(
+    date_time_live = models.DateTimeField(
         verbose_name='Время существования',
         null=True,
         blank=True,

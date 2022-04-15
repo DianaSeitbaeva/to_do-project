@@ -38,6 +38,7 @@ DJANGO_AND_THIRD_PARTY_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 PROJECT_APPS = [
     'abstracts.apps.AbstractsConfig',
